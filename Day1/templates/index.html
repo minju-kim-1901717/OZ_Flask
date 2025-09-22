@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <h1> 사용자 목록 </h1>
+    <hr>
+    <h3>목록 형식</h3>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }} - {{ user.name }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <hr>
+    <h3>테이블형식</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>직업</th>
+                <th>이름</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }} </td>
+                <td>{{ user.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

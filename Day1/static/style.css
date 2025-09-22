@@ -1,0 +1,23 @@
+body{
+    text-align: center;
+    width: 600px;
+    margin: auto;
+}
+
+table{
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 150px;
+  
+}
+
+ul{
+    width: 200px;
+    margin: auto;
+}
