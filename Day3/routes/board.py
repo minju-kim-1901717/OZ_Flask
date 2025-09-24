@@ -3,7 +3,7 @@ from flask.views import MethodView
 from flask_smorest import Blueprint
 from db import db
 from models import Board
-
+ 
 board_blp = Blueprint('Boards', 'boards', description='Operations on boards', url_prefix='/board')
 
 
