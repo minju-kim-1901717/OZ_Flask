@@ -1,0 +1,189 @@
+/* ========== Design Tokens ========== */
+:root{
+  --bg: #0f1224;
+  --panel: #161a34;
+  --panel-2:#1b2040;
+  --text: #e9ecff;
+  --muted:#a9b0d9;
+  --primary:#7c9fff;
+  --primary-2:#6f90ff;
+  --accent:#6bf0c6;
+  --danger:#ff6b7a;
+  --warning:#ffd166;
+  --radius:16px;
+  --radius-sm:12px;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+  --border: 1px solid rgba(255,255,255,.08);
+}
+
+/* 라이트 모드 자동 지원 */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f5f7ff;
+    --panel:#ffffff;
+    --panel-2:#f7f8ff;
+    --text:#151a33;
+    --muted:#647098;
+    --primary:#4a63ff;
+    --primary-2:#3d56f5;
+    --accent:#15c6a2;
+    --danger:#e84b5b;
+    --warning:#f1b213;
+    --border: 1px solid rgba(0,0,0,.06);
+    --shadow: 0 10px 24px rgba(24,33,77,.12);
+  }
+}
+
+/* ========== Global ========== */
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% 0%, rgba(124,159,255,.18), transparent 60%),
+    radial-gradient(1200px 800px at 90% 20%, rgba(107,240,198,.12), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg));
+}
+h1{
+  margin:24px auto 18px;
+  text-align:center;
+  font-size: clamp(22px, 3.2vw, 32px);
+  letter-spacing:.4px;
+  font-weight:800;
+  background: linear-gradient(90deg, var(--text), var(--primary));
+  -webkit-background-clip: text; background-clip:text;
+  color: transparent;
+}
+
+/* 페이지 폭 정렬 */
+body > * {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  width: clamp(300px, 90vw, 980px);
+}
+
+
+
+/* ========== Panels / Cards ========== */
+form, #boards, #users, .panel{
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin: 14px 0;
+}
+
+/* 섹션 간격 */
+form + button, #boards, #users{ margin-top: 18px; }
+
+/* ========== Forms ========== */
+form{
+  display:grid;
+  gap:12px;
+}
+input[type="text"],
+input[type="number"],
+textarea{
+  width:100%;
+  border-radius: 12px;
+  border: var(--border);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  padding: 12px 14px;
+  outline:none;
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+textarea{ min-height:110px; resize:vertical; }
+
+input:focus, textarea:focus{
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(124,159,255,.35);
+  background: rgba(255,255,255,.06);
+}
+
+/* ========== Buttons ========== */
+button{
+  appearance:none;
+  border:0;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-weight:700;
+  cursor:pointer;
+  color:#0f132a;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease, opacity .2s ease;
+  box-shadow: 0 8px 18px rgba(79,160,255,.28);
+}
+button:hover{ filter:saturate(1.05) brightness(1.03) }
+button:active{ transform: translateY(1px) scale(.995) }
+
+/* 보조 버튼 (조회 버튼) */
+button[onclick],
+form + button{
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: #0f132a;
+}
+
+/* 삭제 버튼 스타일 (폼의 마지막 버튼에 적용) */
+#deleteBoardForm button{ 
+  background: linear-gradient(90deg, var(--danger), #ff8aa0);
+  color:#fff; 
+}
+
+/* ========== Lists (boards / users) ========== */
+#boards p, #users p{
+  margin:0;
+  padding:12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  border: var(--border);
+  color:var(--text);
+}
+#boards p + p, #users p + p{ margin-top:10px; }
+
+/* 작은 메타 텍스트 */
+.muted{ color:var(--muted); font-size: 12.5px }
+
+/* ========== Layout helpers ========== */
+.grid-2{
+  display:grid;
+  gap:14px;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 720px){
+  .grid-2{ grid-template-columns: 1fr; }
+}
+
+/* ========== Subtle Animations ========== */
+@keyframes fadeInUp{
+  from{ opacity:0; transform: translateY(6px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+form, #boards, #users, button{ animation: fadeInUp .28s ease both; }
+
+/* ========== Helper: Empty state ========== */
+.empty{
+  padding:18px;
+  border-radius: 12px;
+  text-align:center;
+  color:var(--muted);
+  border: var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+/* ========== Toast (optional hook) ========== */
+.toast{
+  position: fixed; inset:auto 20px 20px auto;
+  background: #151b3a;
+  color:var(--text);
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: var(--border);
+  box-shadow: var(--shadow);
+  opacity:0; transform: translateY(6px);
+  animation: fadeInUp .22s ease .05s both;
+}
