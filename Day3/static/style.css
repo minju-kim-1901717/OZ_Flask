@@ -1,4 +1,3 @@
-/* ========== Design Tokens ========== */
 :root{
   --bg: #0f1224;
   --panel: #161a34;
@@ -16,7 +15,6 @@
   --border: 1px solid rgba(255,255,255,.08);
 }
 
-/* 라이트 모드 자동 지원 */
 @media (prefers-color-scheme: light){
   :root{
     --bg:#f5f7ff;
@@ -34,7 +32,6 @@
   }
 }
 
-/* ========== Global ========== */
 *{box-sizing:border-box}
 html,body{
   height:100%;
@@ -57,7 +54,6 @@ h1{
   color: transparent;
 }
 
-/* 페이지 폭 정렬 */
 body > * {
   max-width: 980px;
   margin-left: auto;
@@ -67,7 +63,6 @@ body > * {
 
 
 
-/* ========== Panels / Cards ========== */
 form, #boards, #users, .panel{
   background: linear-gradient(180deg, var(--panel), var(--panel-2));
   border: var(--border);
@@ -77,10 +72,8 @@ form, #boards, #users, .panel{
   margin: 14px 0;
 }
 
-/* 섹션 간격 */
 form + button, #boards, #users{ margin-top: 18px; }
 
-/* ========== Forms ========== */
 form{
   display:grid;
   gap:12px;
@@ -105,7 +98,6 @@ input:focus, textarea:focus{
   background: rgba(255,255,255,.06);
 }
 
-/* ========== Buttons ========== */
 button{
   appearance:none;
   border:0;
@@ -121,20 +113,17 @@ button{
 button:hover{ filter:saturate(1.05) brightness(1.03) }
 button:active{ transform: translateY(1px) scale(.995) }
 
-/* 보조 버튼 (조회 버튼) */
 button[onclick],
 form + button{
   background: linear-gradient(90deg, var(--primary), var(--primary-2));
   color: #0f132a;
 }
 
-/* 삭제 버튼 스타일 (폼의 마지막 버튼에 적용) */
 #deleteBoardForm button{ 
   background: linear-gradient(90deg, var(--danger), #ff8aa0);
   color:#fff; 
 }
 
-/* ========== Lists (boards / users) ========== */
 #boards p, #users p{
   margin:0;
   padding:12px 14px;
@@ -145,10 +134,8 @@ form + button{
 }
 #boards p + p, #users p + p{ margin-top:10px; }
 
-/* 작은 메타 텍스트 */
 .muted{ color:var(--muted); font-size: 12.5px }
 
-/* ========== Layout helpers ========== */
 .grid-2{
   display:grid;
   gap:14px;
@@ -158,14 +145,12 @@ form + button{
   .grid-2{ grid-template-columns: 1fr; }
 }
 
-/* ========== Subtle Animations ========== */
 @keyframes fadeInUp{
   from{ opacity:0; transform: translateY(6px); }
   to{ opacity:1; transform: translateY(0); }
 }
 form, #boards, #users, button{ animation: fadeInUp .28s ease both; }
 
-/* ========== Helper: Empty state ========== */
 .empty{
   padding:18px;
   border-radius: 12px;
@@ -175,7 +160,6 @@ form, #boards, #users, button{ animation: fadeInUp .28s ease both; }
   background: rgba(255,255,255,.03);
 }
 
-/* ========== Toast (optional hook) ========== */
 .toast{
   position: fixed; inset:auto 20px 20px auto;
   background: #151b3a;
