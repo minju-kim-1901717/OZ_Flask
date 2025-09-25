@@ -10,3 +10,6 @@
 <h3> 4일차 과제 영상 </h3>
 <a href="https://youtu.be/qnEvNmUbeSs">Flask를 이용한 블로그 페이지 만들기</a>
 
+<h3> 5일차 mini Project </h3>
+<a href="https://youtu.be/cnPpOoGbE7A">Flask Movie review Service</a>
+
