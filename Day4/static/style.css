@@ -1,0 +1,127 @@
+:root {
+  --bg: #f9fafb;
+  --panel: #ffffff;
+  --panel-2: #fdfdfd;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-2: #3b82f6;
+  --danger: #ef4444;
+  --border: #e5e7eb;
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+/* 기본 리셋 */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.5;
+}
+h1 {
+  max-width: 900px; margin: 36px auto 8px; padding: 0 16px;
+  font-size: 28px; font-weight: 800;
+}
+h2 {
+  max-width: 900px; margin: 20px auto 12px; padding: 0 16px;
+  color: var(--muted); font-size: 18px;
+}
+hr {
+  max-width: 900px; margin: 28px auto;
+  border: 0; height: 1px;
+  background: var(--border);
+}
+
+/* 폼 패널 */
+#postForm {
+  max-width: 900px; margin: 0 auto;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+#postForm input[type="text"],
+#postForm textarea {
+  width: 100%;
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 6px 0 12px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+#postForm input[type="text"]:focus,
+#postForm textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+#postForm textarea {
+  min-height: 120px; resize: vertical;
+}
+
+/* 버튼 */
+#postForm input[type="submit"],
+#postForm input[type="button"],
+#postsList button {
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .2s ease, transform .05s ease;
+}
+#postForm input[type="submit"]:hover,
+#postForm input[type="button"]:hover,
+#postsList button:hover {
+  background: var(--accent-2);
+}
+#postForm input[type="submit"]:active,
+#postForm input[type="button"]:active,
+#postsList button:active {
+  transform: translateY(1px);
+}
+/* Update 버튼은 아웃라인 */
+#updateButton {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+#updateButton:hover {
+  border-color: var(--accent-2);
+}
+
+/* 게시글 목록 */
+#postsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 60px;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 0 16px;
+}
+@media (min-width: 700px) {
+  #postsList { grid-template-columns: 1fr 1fr; }
+}
+#postsList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+#postsList button:nth-of-type(2) { background: var(--danger); }
+#postsList button:nth-of-type(2):hover { opacity: .9; }
